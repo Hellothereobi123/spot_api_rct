@@ -9,7 +9,7 @@ const SpotifyArtistSearch = () => {
 
   const CLIENT_ID = '975be576524f4742a5eabdc215b9fe9b';
   const CLIENT_SECRET = 'bf9981d9b5d44a9986d7c2d6641161e9';
-  const ARTIST_NAME = 'Queen';
+  const ARTIST_NAME = 'Dhanush';
 
   useEffect(() => {
     getClientCreds();
@@ -111,14 +111,17 @@ const SpotifyArtistSearch = () => {
           <div>
             <h3 className="text-lg font-bold mb-2">Top Tracks:</h3>
             <div className="space-y-2">
-              {topTracks.map((track) => ( //map function is used for iterating through elements of an array and displaying them in this case
+              {
+              topTracks.map((track) => ( //map function is used for iterating through elements of an array and displaying them in this case
                 <div key={track.id} className="p-3 bg-gray-50 rounded">
-                  <p className="font-medium text-purple-500">{track.name}</p>
+                  <p className="font-medium text-blue-500 underline" onClick={()=> window.open(track.external_urls.spotify, "_blank")}>{track.name}</p>
+                  <p className="text-sm text-gray-600">{track.external_urls.spotify}</p>
                   <p className="text-sm text-gray-600">
                     Album: {track.album.name} • Popularity: {track.popularity}
                   </p>
                 </div>
-              ))}
+              ))
+              }
             </div>
           </div>
         )}
@@ -126,5 +129,8 @@ const SpotifyArtistSearch = () => {
     </div>
   );
 };
+function doThis(url){
+
+}
 
 export default SpotifyArtistSearch;
